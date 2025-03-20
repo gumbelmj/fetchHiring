@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fetch Hiring</string>
+    <string name="error_text">Error fetching items</string>
+</resources>
