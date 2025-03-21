@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 import com.fetch.hiring.R
-import com.fetch.hiring.model.Item
 
 class ExpandableItemListAdapter(private val layoutInflater: LayoutInflater) :
     BaseExpandableListAdapter() {
 
-    private val itemMap = HashMap<Int, List<Item>>()
+    private val itemMap = HashMap<String, List<String>>()
 
-    override fun getChild(listPosition: Int, expandedListPosition: Int): Item? {
+    override fun getChild(listPosition: Int, expandedListPosition: Int): String? {
         return itemGroup(listPosition)?.get(expandedListPosition)
     }
 
@@ -32,7 +31,7 @@ class ExpandableItemListAdapter(private val layoutInflater: LayoutInflater) :
         var itemView = convertView ?: layoutInflater.inflate(R.layout.list_item, null)
 
         val textView = itemView.findViewById<View?>(R.id.expandedListItem) as TextView
-        textView.text = getChild(listPosition, expandedListPosition)?.name
+        textView.text = getChild(listPosition, expandedListPosition)
 
         return itemView
     }
@@ -41,7 +40,7 @@ class ExpandableItemListAdapter(private val layoutInflater: LayoutInflater) :
         return itemGroup(listPosition)?.size ?: 0
     }
 
-    override fun getGroup(listPosition: Int): Int? {
+    override fun getGroup(listPosition: Int): String? {
         return itemMap.keys.sorted()[listPosition]
     }
 
@@ -76,13 +75,13 @@ class ExpandableItemListAdapter(private val layoutInflater: LayoutInflater) :
         return true
     }
 
-    fun update(items: Map<Int, List<Item>>) {
+    fun update(items: Map<String, List<String>>) {
         itemMap.clear()
         itemMap.putAll(items)
         notifyDataSetChanged()
     }
 
-    private fun itemGroup(listPosition: Int): List<Item>? {
+    private fun itemGroup(listPosition: Int): List<String>? {
         val group = getGroup(listPosition)
         return itemMap[group]
     }

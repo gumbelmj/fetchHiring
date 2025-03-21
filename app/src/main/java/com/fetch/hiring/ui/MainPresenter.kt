@@ -48,7 +48,7 @@ class MainPresenter(
 
     }
 
-    private fun toModel(serviceResult: ServiceResult.Success): Map<Int, List<Item>> {
+    private fun toModel(serviceResult: ServiceResult.Success): Map<String, List<String>> {
         return itemMapper.map(serviceResult.items)
     }
 

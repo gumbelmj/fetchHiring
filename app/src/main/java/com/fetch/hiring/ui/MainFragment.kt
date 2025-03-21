@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
         presenter.onPause()
     }
 
-    fun updateModel(model: Map<Int, List<Item>>) {
+    fun updateModel(model: Map<String, List<String>>) {
         errorView.visibility = View.GONE
         expandableListView.visibility = View.VISIBLE
         adapter.update(model)

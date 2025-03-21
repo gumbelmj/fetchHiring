@@ -33,7 +33,10 @@ class ItemMapperTest {
 
         val items = listOf(item1, item2, item4, item3, item5, item6, item7)
         val actual = instance.map(items)
-        val expected = mapOf<Int, List<Item>>(1 to listOf(item1, item2), 2 to listOf(item3, item4))
+        val expected = mapOf<String, List<String>>(
+            "1" to listOf("Item 1", "Item 2"),
+            "2" to listOf("Item 3", "Item 4")
+        )
         assertEquals(expected, actual)
     }
 

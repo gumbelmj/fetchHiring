@@ -55,7 +55,7 @@ class MainPresenterTest {
         instance.onResume()
         RxJavaExtension.testScheduler.triggerActions()
 
-        verify(view).updateModel(mapOf(1 to listOf(item1, item2)))
+        verify(view).updateModel(mapOf("1" to listOf("Item1", "Item2")))
     }
 
     @Test
